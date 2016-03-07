@@ -51,6 +51,11 @@ Registry用来保存用户构建的镜像，是Docker生命周期的“仓储和
 
 首先信任 Docker 的 GPG 公钥:
 ```
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+```
+
+再添加源
+```
 echo "deb https://mirrors.tuna.tsinghua.edu.cn/docker/apt/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
 ```
 
