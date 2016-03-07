@@ -45,7 +45,25 @@ Registry用来保存用户构建的镜像，是Docker生命周期的“仓储和
 
   https://docs.docker.com/installation/mac/
 
-## TUNA镜像安装
+## TUNA安装(Ubuntu14.04)
+
+可以使用清华的镜像进行安装，具体参考http://mirrors.tuna.tsinghua.edu.cn/help/docker/
+
+首先信任 Docker 的 GPG 公钥:
+```
+echo "deb https://mirrors.tuna.tsinghua.edu.cn/docker/apt/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
+```
+
+如果安装过lxc-docker，先删除
+```
+sudo apt-get remove lxc-docker*
+```
+
+安装docker
+```
+sudo apt-get update
+sudo apt-get install docker-engine
+```
 
 
 # Docker 基本操作
