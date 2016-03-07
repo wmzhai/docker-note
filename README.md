@@ -12,21 +12,21 @@ Docker 是一个开源的应用容器引擎，让开发者可以打包他们的�
 
 3. 产品方面：提高测试和部署效率，给精益创业满意的开发周期。
 
-## Docker 组件
+# Docker 组件
 
-### Docker 客户端与服务器
+## Docker 客户端与服务器
 
 Docker 是一个客户-服务器（C/S）架构的程序。Docker客户端只需向Docker服务器或守护进程发出请求，守护进程或服务器将完成所有工作并返回结果。
 
-### 镜像
+## 镜像
 
 镜像是Docker生命周期中的“构建”阶段。
 
-### Registry
+## Registry
 
 Registry用来保存用户构建的镜像，是Docker生命周期的“仓储和运输”阶段。
 
-### 容器
+## 容器
 
 容器是Docker的启动或执行阶段。可以这样说，容器是：
 
@@ -34,18 +34,19 @@ Registry用来保存用户构建的镜像，是Docker生命周期的“仓储和
 - 一系列标准的操作
 - 一个执行环境
 
-## 其他
-
 和集装箱一样，Docker 在执行操作时，并不关心容器中到底塞进了什么，他不管里面是web服务器，还是数据库，或是应用程序服务器什么的。所有容器都按照相同的方式将内容装载进去。
 
 # Docker 安装
 
-### Ubuntu安装
+## Ubuntu安装
   wget -qO- https://get.docker.com/ | sh
 
-### mac安装
+## mac安装
 
   https://docs.docker.com/installation/mac/
+
+## TUNA镜像安装
+
 
 # Docker 基本操作
 
@@ -58,8 +59,8 @@ Registry用来保存用户构建的镜像，是Docker生命周期的“仓储和
 - 守护式启动一个自定义命名的cotainer: `docker run --name ContianerName -d ImageName`
 - 重新启动一个已有的cotainer: `docker start ContianerName/ContainerId`
 - 停止一个已运行的cotainer: `docker stop ContianerName/ContainerId`
-- 删除一个cotainer: `docker rm ContianerName/ContainerId` 
-- 删除Docker中全部cotainer: docker rm `docker ps -a -q` 
+- 删除一个cotainer: `docker rm ContianerName/ContainerId`
+- 删除Docker中全部cotainer: docker rm `docker ps -a -q`
 
 ## 通过docker进行container内部操作
 - 深入查看container的info: `docker info`
@@ -75,28 +76,6 @@ Registry用来保存用户构建的镜像，是Docker生命周期的“仓储和
 - 拉取image列表: `docker pull ImageName`
 - 拉取特定的image: `docker pull ImageName:TagName`
 - 搜索image: `docker search ImageName`
-- commit image: `docker commit -m"llllllll" --author="XXXXX" ContainerID Username/ImageName`(官方不推荐) 
+- commit image: `docker commit -m"llllllll" --author="XXXXX" ContainerID Username/ImageName`(官方不推荐)
 - build image: `docker build -t TagName ContextPath`
 - 查看image历史: `docker build history ImageID`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
