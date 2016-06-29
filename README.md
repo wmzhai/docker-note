@@ -73,6 +73,16 @@ sudo apt-get install docker-engine
 
 # Docker 基本操作
 
+## 帮助
+
+- docker --help 整体的帮助，显示所有指令
+- docker command --help 针对特定指令的帮助文档
+
+## docker run
+
+- 参数 -d: 后台运行container
+- 参数 -P: 直接将container内部的端口映射出去
+
 ## container的创建、启动、停止与删除
 - 查看info: `docker info`
 - 查看正在运行的container: `docker ps`
