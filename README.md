@@ -73,23 +73,40 @@ sudo apt-get install docker-engine
 
 # Docker 基本操作
 
-## 帮助
+## 基本信息
 
-- docker --help 整体的帮助，显示所有指令
-- docker command --help 针对特定指令的帮助文档
+* 查看info: `docker info`
+* docker --help 整体的帮助，显示所有指令
+* docker command --help 针对特定指令的帮助文档
 
-## docker run
+## docker run 创建容器
 
-- 参数 -d: 后台运行container
-- 参数 -P: 直接将container内部的端口映射出去
+* -d: 后台运行容器
+* -P: 直接将容器内部的端口映射出去
+* -p 80:5000 将容器的5000端口映射成localhost的80端口
+* --name 为容器命名
+* -v 添加data volume: 比如 `docker run -d -P --name web -v /webapp training/webapp python app.py`
+* -v host-dir:container-dir
+  * 比如 ` docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py`  将host的`/src/webapp` 加载到容器的`/opt/webapp`上
+  * MacOS上Docker只有权限共享/Users 目录，所以只能这样写 `docker run -v /Users/<path>:/<container path> ...`
+  * Windows上 只有权限共享 `C:\Users`目录，所以只能这样写 `docker run -v /c/Users/<path>:/<container path> ...`
 
-## container的创建、启动、停止与删除
-- 查看info: `docker info`
-- 查看正在运行的container: `docker ps`
+举例：
 - 交互式启动一个cotainer: `docker run -i -t ImageName`
 - 交互式启动一个自定义命名的cotainer: `docker run --name ContianerName -i -t ImageName`
 - 守护式启动一个cotainer: `docker run -d ImageName`
 - 守护式启动一个自定义命名的cotainer: `docker run --name ContianerName -d ImageName`
+
+
+## 查看容器
+- docker ps -l: 最后一个启动的容器
+- docker ps -a: 所有容器，包括不在运行的
+- 查看容器中的进程: `docker top ContianerName/ContainerId`
+- 查看容器中的log: `docker logs ContianerName/ContainerId`
+- 查看容器中的log(follow模式): `docker logs -f ContianerName/ContainerID`
+- docker inspect
+
+## 容器的启动、停止与删除
 - 重新启动一个已有的cotainer: `docker start ContianerName/ContainerId`
 - 停止一个已运行的cotainer: `docker stop ContianerName/ContainerId`
 - 删除一个cotainer: `docker rm ContianerName/ContainerId`
@@ -97,9 +114,6 @@ sudo apt-get install docker-engine
 
 ## 通过docker进行container内部操作
 - 深入查看container的info: `docker info`
-- 查看容器中的log: `docker logs ContianerName/ContainerId`
-- 查看容器中的log(follow模式): `docker logs -f ContianerName/ContainerID`
-- 查看容器中的进程情况: `docker top ContianerName/ContainerId`
 - 守护式操作容器: `docker exec -d ContianerName/ContainerId CommandText`
 - 交互式操作容器: `docker exec -i -t ContianerName/ContainerId CommandText`
 
