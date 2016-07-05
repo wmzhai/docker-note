@@ -90,6 +90,13 @@ sudo apt-get install docker-engine
   * 比如 ` docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py`  将host的`/src/webapp` 加载到容器的`/opt/webapp`上
   * MacOS上Docker只有权限共享/Users 目录，所以只能这样写 `docker run -v /Users/<path>:/<container path> ...`
   * Windows上 只有权限共享 `C:\Users`目录，所以只能这样写 `docker run -v /c/Users/<path>:/<container path> ...`
+* -link 通过名称来进行2个容器的通信，不适用ip和端口，举例如下
+```
+  docker run -d --name database postgres
+  docker run -d -P --name website --link database:db ngnix
+```
+最终实际上会在website的/etc/hosts里面创建一个指向db的快捷方式
+
 
 举例：
 - 交互式启动一个cotainer: `docker run -i -t ImageName`
@@ -118,7 +125,7 @@ sudo apt-get install docker-engine
 - 交互式操作容器: `docker exec -i -t ContianerName/ContainerId CommandText`
 
 使用exec指令在容器里面启动一个新的进程，执行/bin/bash可以获得一个shell，比如
-`docker exec -i -t [ContainerId] /bin/bash`
+`docker exec -i -t [ContainerId] /bin`
 
 ## 通过docker进行image的操作
 - 在客户端登陆Docker Hub: `docker login`
