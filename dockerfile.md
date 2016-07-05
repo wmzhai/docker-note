@@ -59,8 +59,12 @@ ADD src destination
 
 ### CMD
 
-容器默认的执行命令。
+容器在创建后默认的执行命令。
 Dockerfile只允许使用一次CMD指令，使用多个CMD会抵消之前所有的指令，只有最后一个指令生效。
+
+在image被build的过程中，这个指令不起作用。
+
+CMD指定的命令可以被docker run传递的命令覆盖。
 
 CMD有三种形式，建议使用数组形式：
 ```
@@ -73,6 +77,8 @@ CMD command param1 param2
 配置给容器一个可执行的命令，每次使用镜像创建容器时一个特定的应用程序可以被设置为默认程序。
 该镜像每次被调用时仅能运行指定的应用。
 类似于CMD，Docker只允许一个ENTRYPOINT，多个ENTRYPOINT会抵消之前所有的指令，只执行最后的ENTRYPOINT指令。
+
+ENTRYPOINT会把容器名后面的所有内容都当成参数传递给其指定的命令（不会对命令覆盖）
 
 语法如下：
 ```

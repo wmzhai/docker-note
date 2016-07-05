@@ -117,6 +117,9 @@ sudo apt-get install docker-engine
 - 守护式操作容器: `docker exec -d ContianerName/ContainerId CommandText`
 - 交互式操作容器: `docker exec -i -t ContianerName/ContainerId CommandText`
 
+使用exec指令在容器里面启动一个新的进程，执行/bin/bash可以获得一个shell，比如
+`docker exec -i -t [ContainerId] /bin/bash`
+
 ## 通过docker进行image的操作
 - 在客户端登陆Docker Hub: `docker login`
 - 查看image列表: `docker images`
