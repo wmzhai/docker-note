@@ -33,13 +33,20 @@ MAINTAINER <author name>
 ```
 
 ### RUN
-在shell或者exec的环境下执行的命令。
+在shell或者exec的环境下执行的命令，就和在shell里面执行的一样。
 RUN指令会在新创建的镜像上添加新的层面，接下来提交的结果用在Dockerfile的下一条指令中。
 
 语法如下：
 ```
 RUN command
 ```
+
+每个run指令都是在image的top writable layer执行一个commit，所以最好使用 `&&` 把连续的指令连接起来，比如
+
+```
+RUN apt-get update && apt-get install -y curl vim openjdk-7-jdk
+```
+
 
 ### ADD
 复制文件指令。它有两个参数<source>和<destination>。
