@@ -97,7 +97,6 @@ sudo apt-get install docker-engine
 ```
 最终实际上会在website的/etc/hosts里面创建一个指向db的快捷方式
 
-
 举例：
 - 交互式启动一个cotainer: `docker run -i -t ImageName`
 - 交互式启动一个自定义命名的cotainer: `docker run --name ContianerName -i -t ImageName`
