@@ -40,7 +40,8 @@ Registry用来保存用户构建的镜像，是Docker生命周期的“仓储和
 
 ## Ubuntu安装
   wget -qO- https://get.docker.com/ | sh
-
+  
+  curl -fsSL https://get.docker.com/ | sh
 ## mac安装
 
   https://docs.docker.com/installation/mac/
